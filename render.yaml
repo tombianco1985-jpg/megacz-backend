@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: megacz-torrent
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 2 --timeout 30 --bind 0.0.0.0:$PORT
+    envVars:
+      - key: TMDB_KEY
+        value: 18029be2c2d8afe9ba42e4c21e25eae9
